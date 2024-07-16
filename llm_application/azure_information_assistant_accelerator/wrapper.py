@@ -61,17 +61,17 @@ class RAG_from_scratch:
                 raise Exception("none")
             matches = re.findall(r'\[File(\d)\]', self.json_response["answer"])
             matches = set(matches)
-            used_list = [self.json_response["data_points"][int(x)] for x in matches]
+            used_list = [[self.json_response["data_points"][int(x)]] for x in matches]
             return used_list
         except Exception as e:
                 print(f"Exception: retrieve {e}")
                 # No return values recorded
                 if self.json_response["data_points"]:
                     # If the answer does not refer to any context return all the retrieved context so that the users can check whether relevant or non-relevant contexts were returned.
-                    return self.json_response["data_points"]
+                    whole_list = [[item] for item in self.json_response["data_points"]]
+                    return whole_list
                 else:
                     return ""
-
     @instrument
     def generate_completion(self, query: str, context_str: list) -> str:
         try:
