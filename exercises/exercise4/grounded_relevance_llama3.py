@@ -49,7 +49,7 @@ feedbacks = [
 custom_test = TestSet(prompts, feedbacks, name="Exercise4-llama3", default_provider="llama3")
 
 # Evaluate our test set
-result = custom_test.evaluate(target, provider="llama3")
+result = custom_test.evaluate(target)
 
 # Run the test dashboard to evaluate results
 app.run_dashboard()
