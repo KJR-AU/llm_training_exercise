@@ -15,8 +15,8 @@ class RAG_from_scratch:
 
     def __init__(self, config_data:dict = config_data):
         self.json_response = {}
-        self.selected_folders:str = config_data.get('selected_folders', "All") # All, check from the information assistant
-        self.selected_tags:str = config_data.get('selected_tags', "") # check from the information assistant
+        self.selected_folders:str = config_data.get('folders', "All") # All, check from the information assistant
+        self.selected_tags:str = config_data.get('tags', "") # check from the information assistant
         self.url = config_data.get('url')
 
     @instrument
@@ -61,17 +61,16 @@ class RAG_from_scratch:
                 raise Exception("none")
             matches = re.findall(r'\[File(\d)\]', self.json_response["answer"])
             matches = set(matches)
-            used_list = [[self.json_response["data_points"][int(x)]] for x in matches]
+            used_list = [{self.json_response["data_points"][int(x)]} for x in matches]
+
+            if used_list == []:
+                whole_list = [{item} for item in self.json_response["data_points"]]
+                return whole_list
             return used_list
         except Exception as e:
                 print(f"Exception: retrieve {e}")
                 # No return values recorded
-                if self.json_response["data_points"]:
-                    # If the answer does not refer to any context return all the retrieved context so that the users can check whether relevant or non-relevant contexts were returned.
-                    whole_list = [[item] for item in self.json_response["data_points"]]
-                    return whole_list
-                else:
-                    return ""
+                return ""
     @instrument
     def generate_completion(self, query: str, context_str: list) -> str:
         try:
@@ -114,5 +113,4 @@ class RAG_from_scratch:
         context_list = self.retrieve(keyword)
         completion = self.generate_completion(query, context_list)
         return completion
-
-rag_chain = RAG_from_scratch()
+    

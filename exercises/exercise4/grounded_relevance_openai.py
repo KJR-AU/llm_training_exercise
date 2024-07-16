@@ -1,9 +1,10 @@
 import sys
 import os
+import json
 # Add the parent directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-from llm_application.azure_information_assistant_accelerator.wrapper import rag_chain
+from llm_application.azure_information_assistant_accelerator.wrapper import RAG_from_scratch
 from kjr_llm.targets import CustomTarget
 from kjr_llm.app import App
 from kjr_llm.tests import TestSet
@@ -19,7 +20,12 @@ from kjr_llm.metrics import (
     ContextRelevance,
     GroundTruthAgreement
 )
+current_file_dir = os.path.dirname(os.path.abspath(__file__))
+full_path = os.path.join(current_file_dir, 'config.json')
+with open(full_path, 'r') as file:
+    config = json.load(file)
 
+rag_chain = RAG_from_scratch(config_data=config)
 
 # Set up the test application
 app = App(app_name="RAG_Application", reset_database=True)
@@ -28,8 +34,6 @@ app = App(app_name="RAG_Application", reset_database=True)
 target: Target = CustomTarget(rag_chain)
 
 # Load our custom inputs - change the name of this file if you have prepared another prompts.
-# Load our custom inputs - change the name of this file if you have prepared another prompts.
-current_file_dir = os.path.dirname(os.path.abspath(__file__))
 full_path = os.path.join(current_file_dir, 'relevance_and_groundedness_prompts.json')
 prompts = PromptSet.from_json_file(full_path)
 
