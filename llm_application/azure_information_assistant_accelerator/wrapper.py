@@ -18,6 +18,8 @@ class RAG_from_scratch:
         self.selected_folders:str = config_data.get('folders', "All") # All, check from the information assistant
         self.selected_tags:str = config_data.get('tags', "") # check from the information assistant
         self.url = config_data.get('url')
+        self.approach = config_data.get('approach', 1) # 1 work only or 3 generative (ungrounded)
+        #Note: When using generative (ungrounded) Ground truth and Groundedness cannot be evaluated.
 
     @instrument
     def az_inf_asst_acc_chat_request(self, input):
@@ -25,7 +27,7 @@ class RAG_from_scratch:
 
         body = {
             "history": [{"user": input}],
-            "approach": 1,
+            "approach": self.approach,
             "overrides": {
                 "semantic_ranker": True,
                 "semantic_captions": False,
@@ -61,10 +63,10 @@ class RAG_from_scratch:
                 raise Exception("none")
             matches = re.findall(r'\[File(\d)\]', self.json_response["answer"])
             matches = set(matches)
-            used_list = [{self.json_response["data_points"][int(x)]} for x in matches]
+            used_list = [self.json_response["data_points"][int(x)] for x in matches]
 
             if used_list == []:
-                whole_list = [{item} for item in self.json_response["data_points"]]
+                whole_list = [item for item in self.json_response["data_points"]]
                 return whole_list
             return used_list
         except Exception as e:
@@ -104,10 +106,17 @@ class RAG_from_scratch:
                 raise Exception(self.json_response["detail"])
         except Exception as e:
             print(f"Exception: {e}")
+            if self.approach == 3:
+                completion = self.generate_completion(query, [])
+                return ""
             keyword = self.generate_keyword("")
             context_list = self.retrieve("")
             completion = self.generate_completion(query, [])
             return ""
+        
+        if self.approach == 3:
+            completion = self.generate_completion(query, [])
+            return completion
         
         keyword = self.generate_keyword(self.json_response["thought_chain"]["work_query"])
         context_list = self.retrieve(keyword)
