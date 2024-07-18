@@ -1,42 +1,14 @@
-# Use the official Python image from the Docker Hub
-FROM mcr.microsoft.com/vscode/devcontainers/python:3.10-bullseye
+# https://github.com/devcontainers/images/tree/main/src/python
 
-# Install necessary dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
-    python3-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# [Choice] Python version (use -bookworm or -bullseye variants on local arm64/Apple Silicon): 3, 3.12, 3.11, 3.10, 3.9, 3.8, 3-bookworm, 3.12-bookworm, 3.11-bookworm, 3.10-bookworm, 3.9-bookworm, 3.8-bookworm, 3-bullseye, 3.12-bullseye, 3.11-bullseye, 3.10-bullseye, 3.9-bullseye, 3.8-bullseye, 3-buster, 3.12-buster, 3.11-buster, 3.10-buster, 3.9-buster, 3.8-buster
+ARG VARIANT=3.10-bullseye
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-# Create a directory for the application
-WORKDIR /workspace
+# Poetry and other dependencies
+RUN pip install ipykernel && \
+    pip install langchain-openai && \
+    pip install scikit-learn
 
-# Install pip requirements
-COPY requirements.txt /workspace/requirements.txt
-RUN pip install --no-cache-dir -r /workspace/requirements.txt
-
-# Install additional tools
-RUN pip install \
-    pylint \
-    flake8 \
-    black
-
-# Set the default user
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-# Create the user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && apt-get install -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
-
-# Switch to the new user
-USER $USERNAME
-
-# Set up the entrypoint
-ENTRYPOINT [ "/bin/bash" ]
+# [Optional] Uncomment this section to install additional OS packages.
+RUN apt update && export DEBIAN_FRONTEND=noninteractive \
+    && apt -y install --no-install-recommends libsm6 libxext6 libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev ffmpeg exiftool
