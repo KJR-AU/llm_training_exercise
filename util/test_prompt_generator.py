@@ -10,10 +10,10 @@ class GenerateTestPrompts:
         self.llm = llm if llm else ChatOpenAI(temperature=temperature, model=model)
         self.simple_chain = chain if chain else self.llm | StrOutputParser()
         self.prompt_file = prompt_file
-        self.prompts = self.load_prompts()
-        self.example_inputs = self.extract_inputs()
+        self.prompts = self._load_prompts()
+        self.example_inputs = self._extract_inputs()
 
-    def load_prompts(self):
+    def _load_prompts(self):
         # Load prompts from a JSON file
         if self.prompt_file == '':
             return [{}]
@@ -22,7 +22,7 @@ class GenerateTestPrompts:
         with open(full_path, 'r') as file:
             return json.load(file)
 
-    def extract_inputs(self):
+    def _extract_inputs(self):
         # Extract input values from the loaded prompts
         example_inputs = []
         for input in self.prompts:
@@ -41,6 +41,28 @@ class GenerateTestPrompts:
         )
         self.test_set = test_set
         return test_set
+    
+    def filter_categories(self, test_set = None):
+        if test_set is None:
+            test_set = self.test_set
+        categories = [category for category in test_set]
+        print("Here's list of categories: ", categories)
+        categories_to_keep = []
+        while True:
+            user_input = input("Enter a category you wish to keep, put in exact word, capital and lowercase sensitive (or type 'done' to finish): ")
+            if user_input.lower() == 'done':
+                break
+            categories_to_keep.append(user_input)
+
+        categories_to_keep = set(categories_to_keep)
+        categories_to_keep.discard('')
+        categories_to_keep = [value for value in categories if value in categories_to_keep]
+        print("Your list:", categories_to_keep)
+        if categories_to_keep == []:
+            print("No existing categories selected so, no filter applied")
+            return test_set
+        filtered_data = {category: test_set[category] for category in categories_to_keep}
+        return filtered_data
 
     def export_to_json_file(self, test_set=None, filename="generated_prompts"):
         # Export the generated prompts to a JSON file
