@@ -2,3 +2,7 @@ git+https://github.com/KJR-AU/llm_test_framework
 ipykernel
 langchain-openai
 scikit-learn
+ipython>=8.12.0
+ipywidgets>=8.0.6
+litellm>=1.25.2
+openpyxl
