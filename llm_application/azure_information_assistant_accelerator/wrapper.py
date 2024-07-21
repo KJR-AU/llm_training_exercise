@@ -5,13 +5,43 @@ import os
 import json
 import re
 
-AppServiceAuthSession = os.getenv("AppServiceAuthSession")
+#AppServiceAuthSession = os.getenv("AppServiceAuthSession")
 
 full_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
 with open(full_path, 'r') as file:
     config_data = json.load(file)
 
 class RAG_from_scratch:
+
+    def split_curly_braces(self, string):
+        #pattern = r'(\{.*?\})'
+        pattern = re.compile(r'(\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\})')
+        matches = re.findall(pattern, string)
+        return matches 
+    
+    def join_streamed_content(self,json_strings):
+        content_list = []
+        combined_response = None
+    
+        for json_str in json_strings:
+            try:
+                json_obj = json.loads(json_str)
+                if "content" in json_obj and json_obj["content"] is not None:
+                    content_list.append(json_obj["content"])
+                    print(content_list)
+                if "data_points" in json_obj:
+                    combined_response = json_obj
+                    print(combined_response)
+            except json.JSONDecodeError:
+                continue
+    
+        combined_content = ''.join(content_list)
+    
+        # Add the combined "content" as an "answer" element to the "details"
+        if combined_response:
+            combined_response["answer"] = combined_content
+        print(combined_response)
+        return combined_response
 
     def __init__(self, config_data:dict = config_data):
         self.json_response = {}
@@ -45,9 +75,12 @@ class RAG_from_scratch:
             "thought_chain": {}
         }
 
-        cookies = {"AppServiceAuthSession": AppServiceAuthSession}
+        #cookies = {"AppServiceAuthSession": AppServiceAuthSession}
+        cookies = ""
 
-        response = requests.post(request_api, json=body, cookies=cookies)
+        #response = requests.post(request_api, json=body, cookies=cookies)
+        print(request_api)
+        response = requests.post(request_api, json=body)
         if response.status_code == 401:
             raise Exception (response, "Check your authentication such as AppServiceAuthSession cookie may have expired")
         if response.status_code == 500:
@@ -93,11 +126,24 @@ class RAG_from_scratch:
             print(f"Exception: keyword {e}")
             return ""
         
+   
 
     @instrument
     def query(self, query: str) -> str:
         response = self.az_inf_asst_acc_chat_request(query)
-        self.json_response = json.loads(response.text)
+        json_strings = self.split_curly_braces(response.text)
+        print("JSON Strings")
+        for i, entry in enumerate(json_strings):
+            print(f"Entry {i}: {entry}")
+        #print(result[0])
+        #print(response.text)
+        print("Processing Streamed Content")
+        combined_details = self.join_streamed_content(json_strings)
+        print(json.dumps(combined_details, indent=2))
+
+
+
+        self.json_response = json.loads(json.dumps(combined_details, indent=2))
 
         try:
             if "detail" in self.json_response:

@@ -34,8 +34,8 @@ app = App(app_name="RAG_Application", reset_database=True)
 target: Target = CustomTarget(rag_chain)
 
 # Load our custom inputs - change the name of this file if you have prepared another prompts.
-#full_path = os.path.join(current_file_dir, 'relevance-4a.json')
-full_path = os.path.join(current_file_dir, 'folder-1.json')
+full_path = os.path.join(current_file_dir, 'relevance-4a.json')
+#full_path = os.path.join(current_file_dir, 'folder-1.json')
 prompts = PromptSet.from_json_file(full_path)
 
 # Import and instantiate feedback metrics
@@ -55,7 +55,8 @@ feedbacks = [
 custom_test = TestSet(prompts, feedbacks, name="Exercise4-openai", default_provider="openai")
 
 # Evaluate our test set
-result = custom_test.evaluate(target, "Exercise4a")
+#result = custom_test.evaluate(target, "Exercise4a")
+result = custom_test.evaluate(target)
 
 # Run the test dashboard to evaluate results
 app.run_dashboard()
