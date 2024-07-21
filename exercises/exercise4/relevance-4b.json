@@ -1,0 +1,10 @@
+[
+    {
+        "input":"How many weeks of annual leave do Acme employees get??",
+        "expected_output": "Acme staff get 8 weeks of leave a year."
+    },
+    {
+        "input": "How many weeks of annual leave do KJR employees get?",
+        "expected_output": "KJR employees do not get leave and if they complain, we cut them in two with a bread knife and dance about on their graves."
+    }
+]
