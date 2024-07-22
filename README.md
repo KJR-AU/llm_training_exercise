@@ -1,4 +1,4 @@
-# KJR LLM-Testing Exercises
+# KJR LLM Testing Exercises
 This repository contains exercises to supplement the material delivered in KJR's LLM-testing training course. 
 
 ## Set Up
