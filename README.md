@@ -1,47 +1,29 @@
-# llm_training_exercise
+# KJR LLM-Testing Exercises
+This repository contains exercises to supplement the material delivered in KJR's LLM-testing training course. 
 
-# Set up
-Python >= 3.10 (recommended)
+## Set Up
+The exercises are intended to be completed in a `Github Codespace`, a vscode-based containerised development environment which can be accessed from a browser and will enable you to run the required code examples. 
 
-# For how to use Azure information assistant wrapper to integrate with llm_test_framework:
-1. clone the git repository
-```
-git clone https://github.com/KJR-AU/llm_training_exercise.git
-```
+The environment will come preinstalled with relevant `vscode extensions`, a compatible version of the `Python` programming language and suite of `Python packages` required to run the exercises.  
 
-2. Fill in .env file like below:
-```
-Create new secret key from here: https://platform.openai.com/api-keys and paste the key here
-OPENAI_API_KEY = "" 
+### Creating a Codespace
+1. Ensure that you are on the `main` branch, click the `Code` button, then the `Codespaces` tab and finally press the `+` to spin up a new codespace. 
 
-```
-3. Create .venv and install requirements
-```bash
-python -m venv .venv
-```
+2. The codespace will automatically open in a new tab in your browser and take a few minutes to build.
 
-```bash
-.venv\Scripts\activate
+3. Navigate to https://platform.openai.com/api-keys and create a new Open AI API key, it should looking something like this:
+
+`sk-XXXXXXXXXXXXXXXXXXXXXXXX`
+
+4. Open the `.env` file and paste the key you just created into the quote marks next to `OPENAI_API_KEY`, once done the file should look like this:
 ```
+OPENAI_API_KEY="sk-XXXXXXXXXXXXXXXXXXXXXXXX" 
+```
+3. From a terminal, run `source .env`. You can confirm that this has been set up correctly by running `echo $OPENAI_API_KEY` which should output the key you generated in step 3. 
 
 ```bash
-pip install git+https://github.com/KJR-AU/llm_test_framework
-pip install -r requirements.txt
+source .env
+echo $OPENAI_API_KEY
+> sk-XXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-4. Install jupyter notebook extension and python extension
-Name: Jupyter
-Id: ms-toolsai.jupyter
-Description: Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more.
-Version: 2024.6.0
-Publisher: Microsoft
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter
-
-and 
-
-Name: Python
-Id: ms-python.python
-Description: Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.
-Version: 2024.10.0
-Publisher: Microsoft
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-python.python
