@@ -58,8 +58,7 @@ feedbacks = [
 custom_test = TestSet(prompts, feedbacks, name="Exercise4-openai", default_provider="openai")
 
 # Evaluate our test set
-#result = custom_test.evaluate(target, "Exercise4a")
-result = custom_test.evaluate(target)
+result = custom_test.evaluate(target, "Exercise4a")
 
 # Run the test dashboard to evaluate results
 app.run_dashboard()
