@@ -1,7 +1,7 @@
 # KJR LLM Testing Exercises
 This repository contains exercises to supplement the material delivered in KJR's LLM-testing training course. 
 
-## Set Up
+## Instructions
 The exercises are intended to be completed in a `Github Codespace`, a vscode-based containerised development environment which can be accessed from a browser and will enable you to run the required code examples. 
 
 The environment will come preinstalled with relevant `vscode extensions`, a compatible version of the `Python` programming language and suite of `Python packages` required to run the exercises.  
