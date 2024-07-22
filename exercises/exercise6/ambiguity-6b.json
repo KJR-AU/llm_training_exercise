@@ -1,0 +1,57 @@
+[
+        {
+            "input": "What is adoption?",
+            "expected_output": "Adoption is a legal process where all legal rights and responsibilities for a child are transferred from the birth parents of the child to the adoptive parents.",
+            "_comment": "Both articles have the adoption process but the child adoption fact sheet has the What is adoption? section"
+        },
+        {
+            "input": "I am 20 years old. Am I allowed to adopt a child in NSW?",
+            "expected_output": "To adopt a child in NSW you must be at least 21 years of age, resident or domiciled in NSW and meet legislated eligibility criteria for adoption applicants.",
+            "_comment": "Checking whether the LLM catches the 20 years old information."
+        },
+        {
+            "input": "Adoption costs?",
+            "expected_output": "Fees are published in the Government Gazette and the approximate costs for each of the programs are as follows:\n1. 1. Local Adoption and Permanent Care: Departmental fees of $2,782 plus legal fees of $834. Some Departmental and legal fees are waived for permanent care placements. If your application requires updating their will be additional fees for these services.\n2. 2. Intercountry Adoption: Departmental fees of $9,700 (first adoption application) and $6,900 (second and subsequent adoption applications).\n3. Intercountry adoption applicants face additional fees incurred in NSW and overseas including notarisation, legalisation and authentication of documents, immigration sponsorship application fees, travel expenses, translation fees, charges imposed by the overseas country/agency and legal fees in both NSW and the overseas country. Please refer to the Intercountry Adoption Australia website for further detail about the individual country program costs.",
+            "_comment": "Checking how the LLM responds to vague questions. Both articles talk about adoption costs but the child adoption fact sheet mentions specific costs vs the pet adoption which mentions non-value specific costs in the Financial commitment section."
+        },
+        {
+            "input": "What are the other intercountry adoption service providers?",
+            "expected_output": "Family and Community Services (FACS) is currently the only agency in NSW that arranges Intercountry adoption placements.",
+            "_comment": "Checking whether the LLM responds with the other non-intercountry adoption service providers"
+        },
+        {
+            "input": "I want to adopt a child from Anglicare Adoption Services. Give me their contact details.",
+            "expected_output": "Anglicare Adoption Services Phone (02) 9890 6855",
+            "_comment": "Checking if the LLM will handle this as PII"
+        },
+        {
+            "input": "According to the NSW Adoption Regulation 2015, I am eligible to adopt. How long is my Expression of Interest valid?",
+            "expected_output": "Your EOI is valid for 12 months from the date that you receive written acknowledgement of receipt from Adoption and Permanency Services.",
+            "_comment": "Checking the accuracy of the answer"
+        },
+        {
+            "input": "I want to adopt a dog. What costs come with owning a pet?",
+            "expected_output": "In the excitement of getting a new pet, you may forget you are taking on a significant financial responsibility. Remember some animals will cost more than others, depending on their species and size and their health needs.\n Upfront costs for cats and dogs include their initial vaccination course, microchipping and desexing. There are also a number of ongoing costs you will have to factor in, such as food, vet bills (including ongoing regular check-ups and vaccinations), training, worming/flea and tick prevention, toys and bedding, which are all critical for keeping your pet safe and healthy throughout their life.\n It is also important to ensure you have an emergency fund to pay for unexpected accidents, injuries or illnesses experienced by your pet.",
+            "_comment": "Checking if the LLM responds with a mix of pet adoption costs and child adoption costs"
+        },
+        {
+            "input": "Who can help me with the adoption process?",
+            "expected_output": "RSPCA Victoria",
+            "_comment": "Checking how the LLM responds with vague questions. Both articles have the adoption process but the pet adoption blog has the Adoption process section"
+        },
+        {
+            "input": "How do you bond with cats?",
+            "expected_output": "Take the time to bond with your pet to build trust, confidence, and affection so that you will have an extremely rewarding relationship. For cats, this means grooming, affection and playtime.",
+            "_comment": "Checking the accuracy of the answer"
+        },
+	{
+            "input": "My wife wants to adopt a dog. Do we need a backyard?",
+            "expected_output": "The size of your home, or garden, is critical in determining what type of animal you should get. The more research you do into specific species and breeds, and more thought put into what animal is likely to best suit your lifestyle, the more confident you will be in your decision.\n1. If you are thinking about getting a dog, consider if you have a suitable backyard, whether it is secure and plan where the dog will be housed when you are not at home.",
+            "_comment": "Checking the accuracy of the answer"
+        },
+        {
+            "input": "How long do pets live?",
+            "expected_output": "100 billion years",
+            "_comment": "Incorrect unexpected output. Checking the agreement measure score."
+        }
+]

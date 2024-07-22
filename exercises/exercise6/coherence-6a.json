@@ -1,0 +1,50 @@
+ [
+         {
+            "input": "Who wrote the Why Joe Biden Should Stay in the Race article?",
+            "expected_output": "Paul Massari of Harvard Kennedy C. Griffin Graduate School of Arts and Sciences"
+        },
+        {
+            "input": "If Joe steps down as the President  of the United States of America, who will take over?",
+            "expected_output": "Kamala Harris"
+        },
+        {
+            "input": "Why are the democrats feeling panicked?",
+            "expected_output": "Due to President Joe Biden's debate performance last June 27 with former President Donald Trump"
+        },
+        {
+            "input": "Who was leading in the presidential polls in 2016?",
+            "expected_output": "Hillary Clinton was leading against Donald Trump in the 2016 presidential polls."
+        },
+        {
+            "input": "What are the ten key factors in predicting presidential elections?",
+            "expected_output": "There are 13 key factors in predicting the presidential elections: party mandate, contest, incumbency, serious third-party campaign, short-term economy, long-term economy, policy change, social unrest, scandal, foreign/military failure, foreign/military success, incumbent charisma, and challenger charisma."
+        },
+        {
+            "input": "If the odds are still in favor of the incumbent, why hasn't it shown up in the polls?",
+            "expected_output": "Polls are snapshots, not predictors. Remember, the pollsters assured us Hillary Clinton was bound to win in 2016. In fact, the Princeton Election Consortium said there was a 99 percent chance that Clinton would win. The eminent professor, Sam Wang, said: If I'm wrong I'll eat a bug on national TV. And he did. The last Gallup poll showed Romney beating Obama in 2012. So, I don't use the polls for prediction. This is a particularly fluid election. We have the debate. We're going to have the sentencing of Donald Trump on July 11. We may have a mini-trial on his immunity claim in New York. We have two conventions coming up. So, even if you believe the polls, it's way too early."
+        },
+        {
+            "input": "Who wrote the article To Serve His Country, President Biden Should Leave the Race?",
+            "expected_output": "The New York Times opinion piece was written by their Editorial Board. The editorial board is a group of opinion journalists whose views are informed by expertise, research, debate and certain longstanding values. It is separate from the newsroom."
+        },        
+	    {
+            "input": "Can we trust Donald Trump?",
+            "expected_output": "Donald Trump has proved himself to be a significant jeopardy to that democracy — an erratic and self-interested figure unworthy of the public trust. He systematically attempted to undermine the integrity of elections. His supporters have described, publicly, a 2025 agenda that would give him the power to carry out the most extreme of his promises and threats. If he is returned to office, he has vowed to be a different kind of president, unrestrained by the checks on power built into the American political system."
+        },        
+	    {
+            "input": "What happened on the June 27 debate?",
+            "expected_output": "Biden vs Trump presidential debate. The president appeared  as the shadow of a great public servant. He struggled to explain what he would accomplish in a second term. He struggled to respond to Mr. Trump’s provocations. He struggled to hold Mr. Trump accountable for his lies, his failures and his chilling plans. More than once, he struggled to make it to the end of a sentence."
+        },
+	    {
+            "input": "Who challenged who to a debate?",
+            "expected_output": "Mr. Biden challenged Mr. Trump to this verbal duel. He set the rules, and he insisted on a date months earlier than any previous general election debate. He understood that he needed to address longstanding public concerns about his mental acuity and that he needed to do so as soon as possible."
+        },
+        {
+            "input": "What did the article say about Jan. 6?",
+            "expected_output": "Trump refused to promise that he would accept defeat, returning instead to the kind of rhetoric that incited the Jan. 6 attack on Congress."
+        },
+        {
+            "input": "Why should Australians vote for Biden?",
+            "expected_output": "Joe Biden is the current President of the United States of America and is running for reelection in 2024.  It is the Americans that vote in the US elections."
+        }
+]
