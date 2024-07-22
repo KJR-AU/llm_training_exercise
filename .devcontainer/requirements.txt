@@ -11,3 +11,6 @@ pypdf
 pysqlite3-binary
 chromadb
 langchainhub
+langchain_experimental
+presidio-anonymizer
+presidio-analyzer
