@@ -19,11 +19,3 @@ The environment will come preinstalled with relevant `vscode extensions`, a comp
 ```
 OPENAI_API_KEY="sk-XXXXXXXXXXXXXXXXXXXXXXXX" 
 ```
-3. From a terminal, run `source .env`. You can confirm that this has been set up correctly by running `echo $OPENAI_API_KEY` which should output the key you generated in step 3. 
-
-```bash
-source .env
-echo $OPENAI_API_KEY
-> sk-XXXXXXXXXXXXXXXXXXXXXXXX
-```
-
