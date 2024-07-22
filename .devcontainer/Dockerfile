@@ -4,10 +4,10 @@
 ARG VARIANT=3.10-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
+ADD requirements.txt .
+RUN pip install -r requirements.txt
+
 # Poetry and other dependencies
-RUN pip install ipykernel && \
-    pip install langchain-openai && \
-    pip install scikit-learn
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt update && export DEBIAN_FRONTEND=noninteractive \
