@@ -1,6 +1,8 @@
 import sys
 import os
 import json
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 # Add the parent directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
