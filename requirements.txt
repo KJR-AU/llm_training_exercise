@@ -1,3 +1,4 @@
+git+https://github.com/KJR-AU/llm_test_framework
 ipykernel
 langchain-openai
 scikit-learn
