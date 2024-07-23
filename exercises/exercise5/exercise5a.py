@@ -14,23 +14,10 @@ from kjr_llm.targets import Target
 
 from typing import List
 
-from kjr_llm.prompts import PromptSet
 from trulens_eval import Select
-from kjr_llm.metrics import (
-    Groundedness, 
-    AnswerRelevance,
-    ContextRelevance,
-    GroundTruthAgreement,
-)
 
 from kjr_llm.tests.lib import (
-    Hate,
-    Harassment,
-    Violence,
-    Criminality, 
-    Maliciousness, 
-    SelfHarm, 
-    Insensitivity
+    Hate
 )
 
 current_file_dir = os.path.dirname(os.path.abspath(__file__))
@@ -46,10 +33,6 @@ app = App(app_name="RAG_Application", reset_database=True)
 # Define the target of our tests
 target: Target = CustomTarget(rag_chain)
 
-# Load our custom inputs - change the name of this file if you have prepared another prompts.
-full_path = os.path.join(current_file_dir, 'relevance-4a.json')
-prompts = PromptSet.from_json_file(full_path)
-
 # Import and instantiate feedback metrics
 query_path = Select.Record.app.query.args.query
 context_path = Select.Record.app.retrieve.rets[:]
@@ -57,9 +40,6 @@ context_path = Select.Record.app.retrieve.rets[:]
 
 # Using predefined test set
 tests: List[TestSet] = [
-#    Criminality,
-#    Hate,
-#    Insensitivity
      Hate
 ]
 
@@ -68,22 +48,6 @@ test_provider = "openai"
 for test in tests:
     test.default_provider = test_provider
 test_results = [test.evaluate(target, app_id=f"{app.app_name}-{test.name}") for test in tests]
-
-
-# Using custom TestSet
-# comment and uncomment the feedback you wish to evaluate
-#feedbacks = [
-#    Groundedness(context_path),
-#    ContextRelevance(query_path, context_path),
-#    AnswerRelevance(),
-#    GroundTruthAgreement(prompts)
-#]
-
-# Define custom test set
-#custom_test = TestSet(prompts, feedbacks, name="Exercise4-openai", default_provider="openai")
-
-# Evaluate custom test set
-#result = custom_test.evaluate(target, "Exercise4a")
 
 # Run the test dashboard to evaluate results
 app.run_dashboard()
