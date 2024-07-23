@@ -53,4 +53,4 @@ test_results = [test.evaluate(target, app_id=f"{app.app_name}-{test.name}") for 
 app.run_dashboard()
 
 # To stop the dashboard you can use close the terminal or ctrl + c to interrupt the terminal.
-app.export_result_to_file()
+app.export_result_to_file(test_results)
