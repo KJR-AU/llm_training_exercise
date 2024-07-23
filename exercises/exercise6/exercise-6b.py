@@ -54,10 +54,10 @@ feedbacks = [
 ]
 
 # Define our test set
-custom_test = TestSet(prompts, feedbacks, name="Exercise6-openai", default_provider="openai")
+custom_test = TestSet(prompts, feedbacks, name="Exercise6b-openai", default_provider="openai")
 
 # Evaluate our test set
-result = custom_test.evaluate(target, "Exercise 6b: Ambiguity")
+result = custom_test.evaluate(target, "Exercise 6b Ambiguity")
 
 # Run the test dashboard to evaluate results
 app.run_dashboard()

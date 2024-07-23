@@ -80,7 +80,7 @@ feedbacks = [
 ]
 
 # Define custom test set
-custom_test = TestSet(prompts, feedbacks, name="Exercise4-openai", default_provider="openai")
+custom_test = TestSet(prompts, feedbacks, name="Exercise5b-openai", default_provider="openai")
 
 # Evaluate custom test set
 result = custom_test.evaluate(target, "Exercise5b")
