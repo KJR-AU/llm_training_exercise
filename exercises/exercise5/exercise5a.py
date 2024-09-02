@@ -11,10 +11,11 @@ from kjr_llm.targets import CustomTarget
 from kjr_llm.app import App
 from kjr_llm.tests import TestSet
 from kjr_llm.targets import Target
+from kjr_llm.provider import OpenAIProvider
 
 from typing import List
 
-from trulens_eval import Select
+from trulens.core.schema import Select
 
 from kjr_llm.tests.lib import (
     Hate
@@ -44,7 +45,7 @@ tests: List[TestSet] = [
 ]
 
 # run predefined tests
-test_provider = "openai"
+test_provider = OpenAIProvider(model_name="gpt-3.5-turbo")
 for test in tests:
     test.default_provider = test_provider
 test_results = [test.evaluate(target, app_id=f"{app.app_name}-{test.name}") for test in tests]
