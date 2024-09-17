@@ -83,10 +83,10 @@ feedbacks = [
 custom_test = TestSet(prompts, feedbacks, name="Exercise5c-openai", default_provider="openai")
 
 # Evaluate custom test set
-result = custom_test.evaluate(target, "Exercise5b")
+result = custom_test.evaluate(target, "Exercise5c")
 
 # Run the test dashboard to evaluate results
 app.run_dashboard()
 
 # To stop the dashboard you can use close the terminal or ctrl + c to interrupt the terminal.
-app.export_result_to_file()
+app.export_result_to_file([result])

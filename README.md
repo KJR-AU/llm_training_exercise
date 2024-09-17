@@ -12,7 +12,7 @@ The environment will come preinstalled with relevant `vscode extensions`, a comp
 
 2. The codespace will automatically open in a new tab in your browser and take a few minutes to build.
 
-3. Navigate to https://platform.openai.com/api-keys and create a new Open AI API key, it should look something like `sk-XXXXXXXXXXXXXXXXXXXXXXXX`
+3. An Open AI API key will be provided to you during the course, it should look something like `sk-XXXXXXXXXXXXXXXXXXXXXXXX`
 
 4. Open the `.env` file and paste the key you just created into the quote marks next to `OPENAI_API_KEY`, once done the file should look like this:
 ```

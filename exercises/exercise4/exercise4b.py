@@ -81,4 +81,4 @@ result_b = custom_test_b.evaluate(target_b, "Exercise4b")
 app.run_dashboard()
 
 # To stop the dashboard you can use close the terminal or ctrl + c to interrupt the terminal.
-app.export_result_to_file()
+app.export_result_to_file([result_a]+[result_b])
