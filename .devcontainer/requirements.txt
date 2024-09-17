@@ -1,5 +1,5 @@
 python-dotenv==1.0.1
-git+https://github.com/KJR-AU/llm_test_framework@small_bug_fixes
+git+https://github.com/KJR-AU/llm_test_framework@main
 ipykernel
 langchain-openai
 scikit-learn

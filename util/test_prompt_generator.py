@@ -2,7 +2,7 @@ import os
 import json
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
-from trulens_eval.generate_test_set import GenerateTestSet
+from trulens.benchmark.generate.generate_test_set import GenerateTestSet
 
 class GenerateTestPrompts:
     def __init__(self, llm=None, chain=None, model="gpt-3.5-turbo", temperature=0, prompt_file=''):

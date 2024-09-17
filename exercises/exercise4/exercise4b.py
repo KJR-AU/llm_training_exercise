@@ -11,11 +11,12 @@ from kjr_llm.targets import CustomTarget
 from kjr_llm.app import App
 from kjr_llm.tests import TestSet
 from kjr_llm.targets import Target
+from kjr_llm.provider import OpenAIProvider
 
 from typing import List
 
 from kjr_llm.prompts import PromptSet
-from trulens_eval import Select
+from trulens.core.schema import Select
 from kjr_llm.metrics import (
     Groundedness, 
     AnswerRelevance,
@@ -70,8 +71,8 @@ feedbacks_b = [
 ]
 
 # Define our test set
-custom_test_a = TestSet(prompts_a, feedbacks_a, name="Exercise4a-openai", default_provider="openai")
-custom_test_b = TestSet(prompts_b, feedbacks_b, name="Exercise4b-openai", default_provider="openai")
+custom_test_a = TestSet(prompts_a, feedbacks_a, name="Exercise4a-openai", default_provider=OpenAIProvider(model_name="gpt-3.5-turbo"))
+custom_test_b = TestSet(prompts_b, feedbacks_b, name="Exercise4b-openai", default_provider=OpenAIProvider(model_name="gpt-3.5-turbo"))
 
 # Evaluate our test set
 result_a = custom_test_a.evaluate(target_a, "Exercise4a")
