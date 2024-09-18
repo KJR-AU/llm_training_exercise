@@ -14,10 +14,12 @@ from kjr_llm.tests import TestSet
 from kjr_llm.targets import Target
 import warnings
 warnings.filterwarnings("ignore")
+from kjr_llm.provider import OpenAIProvider
+
 from typing import List
 
 from kjr_llm.prompts import PromptSet
-from trulens_eval import Select
+from trulens.core.schema import Select
 from kjr_llm.metrics import (
     Groundedness, 
     AnswerRelevance,
@@ -56,7 +58,7 @@ feedbacks = [
 ]
 
 # Define our test set
-custom_test = TestSet(prompts, feedbacks, name="Exercise4-openai", default_provider="openai")
+custom_test = TestSet(prompts, feedbacks, name="Exercise4-openai", default_provider=OpenAIProvider(model_name="gpt-3.5-turbo"))
 
 # Evaluate our test set
 result = custom_test.evaluate(target, "Exercise4a")

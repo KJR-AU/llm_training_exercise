@@ -1,6 +1,6 @@
 import requests
 import json
-from trulens_eval.tru_custom_app import instrument
+from trulens.apps.custom import instrument
 import os
 import re
 
