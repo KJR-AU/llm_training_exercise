@@ -5,9 +5,7 @@ ARG VARIANT=3.11-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 ADD requirements.txt .
-RUN pip install -r requirements.txt
-
-RUN sudo chmod -R 777 /usr/local/lib/python3.11/site-packages
+RUN python -m pip install -r requirements.txt
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt update && export DEBIAN_FRONTEND=noninteractive \
