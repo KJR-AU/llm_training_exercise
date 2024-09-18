@@ -4,15 +4,25 @@
             "expected_output": "Adoption is a legal process where all legal rights and responsibilities for a child are transferred from the birth parents of the child to the adoptive parents.",
             "_comment": "Both articles have the adoption process but the child adoption fact sheet has the What is adoption? section"
         },
+	{
+            "input": "Adoption costs?",
+            "expected_output": "Fees are published in the Government Gazette and the approximate costs for each of the programs are as follows:\n1. 1. Local Adoption and Permanent Care: Departmental fees of $2,782 plus legal fees of $834. Some Departmental and legal fees are waived for permanent care placements. If your application requires updating their will be additional fees for these services.\n2. 2. Intercountry Adoption: Departmental fees of $9,700 (first adoption application) and $6,900 (second and subsequent adoption applications).\n3. Intercountry adoption applicants face additional fees incurred in NSW and overseas including notarisation, legalisation and authentication of documents, immigration sponsorship application fees, travel expenses, translation fees, charges imposed by the overseas country/agency and legal fees in both NSW and the overseas country. Please refer to the Intercountry Adoption Australia website for further detail about the individual country program costs.",
+            "_comment": "Checking how the LLM responds to vague questions. Both articles talk about adoption costs but the child adoption fact sheet mentions specific costs vs the pet adoption which mentions non-value specific costs in the Financial commitment section."
+        },
+	{
+            "input": "What is the adoption process in Victoria?",
+            "expected_output": "You should nominate the kind of animal you want to adopt and the RSPCA will inspect your home to ensure you have suitable space for the pet.",
+            "_comment": "Checking how the LLM responds to vague questions. Both articles talk about adoption processes, but there is no information about child adoption in Victoria."
+        },
+	{
+            "input": "What is the process of adopting a child in Victoria?",
+            "expected_output": "I don't know about child adoption in Victoria, only in NSW.",
+            "_comment": "Checking how the LLM responds to vague questions. Both articles talk about adoption processes, but there is no information about child adoption in Victoria."
+        },
         {
             "input": "I am 20 years old. Am I allowed to adopt a child in NSW?",
             "expected_output": "To adopt a child in NSW you must be at least 21 years of age, resident or domiciled in NSW and meet legislated eligibility criteria for adoption applicants.",
             "_comment": "Checking whether the LLM catches the 20 years old information."
-        },
-        {
-            "input": "Adoption costs?",
-            "expected_output": "Fees are published in the Government Gazette and the approximate costs for each of the programs are as follows:\n1. 1. Local Adoption and Permanent Care: Departmental fees of $2,782 plus legal fees of $834. Some Departmental and legal fees are waived for permanent care placements. If your application requires updating their will be additional fees for these services.\n2. 2. Intercountry Adoption: Departmental fees of $9,700 (first adoption application) and $6,900 (second and subsequent adoption applications).\n3. Intercountry adoption applicants face additional fees incurred in NSW and overseas including notarisation, legalisation and authentication of documents, immigration sponsorship application fees, travel expenses, translation fees, charges imposed by the overseas country/agency and legal fees in both NSW and the overseas country. Please refer to the Intercountry Adoption Australia website for further detail about the individual country program costs.",
-            "_comment": "Checking how the LLM responds to vague questions. Both articles talk about adoption costs but the child adoption fact sheet mentions specific costs vs the pet adoption which mentions non-value specific costs in the Financial commitment section."
         },
         {
             "input": "What are the other intercountry adoption service providers?",
