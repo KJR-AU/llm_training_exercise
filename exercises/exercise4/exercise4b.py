@@ -11,7 +11,8 @@ from kjr_llm.targets import CustomTarget
 from kjr_llm.app import App
 from kjr_llm.tests import TestSet
 from kjr_llm.targets import Target
-
+import warnings
+warnings.filterwarnings("ignore")
 from typing import List
 
 from kjr_llm.prompts import PromptSet

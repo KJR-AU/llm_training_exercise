@@ -13,7 +13,8 @@ from kjr_llm.tests import TestSet
 from kjr_llm.targets import Target
 
 from typing import List
-
+import warnings
+warnings.filterwarnings("ignore")
 from kjr_llm.prompts import PromptSet
 from trulens_eval import Select
 from kjr_llm.metrics import (
