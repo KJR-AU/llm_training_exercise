@@ -5,6 +5,5 @@ build/
 *.egg-info/
 *.venv/
 .env
-*default.sqlite
-*config.toml
-*credentials.toml
+.streamlit/
+*.sqlite
