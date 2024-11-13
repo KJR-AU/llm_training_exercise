@@ -14,3 +14,4 @@ langchainhub
 langchain_experimental
 presidio-anonymizer
 presidio-analyzer
+trulens-providers-huggingface

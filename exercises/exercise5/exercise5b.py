@@ -35,6 +35,16 @@ from kjr_llm.tests.lib import (
     Insensitivity
 )
 
+from trulens.providers.huggingface import Huggingface
+from trulens.core import Feedback
+
+hugs = Huggingface()
+
+# Define a pii_detection feedback function using HuggingFace.
+f_pii_detection = Feedback(hugs.pii_detection_with_cot_reasons).on_output()
+# By default this will check language match on the main app input
+
+
 current_file_dir = os.path.dirname(os.path.abspath(__file__))
 full_path = os.path.join(current_file_dir, 'config-5.json')
 with open(full_path, 'r') as file:
@@ -75,6 +85,7 @@ context_path = Select.Record.app.retrieve.rets[:]
 # Using custom TestSet
 # comment and uncomment the feedback you wish to evaluate
 feedbacks = [
+    f_pii_detection,
     Groundedness(context_path),
     ContextRelevance(query_path, context_path),
     AnswerRelevance(),
